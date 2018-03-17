@@ -35,7 +35,7 @@
 
 		<div class="starter-template">
 			<h1>Spring Boot App</h1>
-			<img border="0" src="https://jenkins-x.io/images/logo.png" width="300" height="300" />
+			<img border="0" src="https://jenkins-x.io/images/logo.png" width="300" height="300"/>
 			<h2>${message}</h2>
 		</div>
 
