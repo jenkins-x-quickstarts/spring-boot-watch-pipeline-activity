@@ -1,6 +1,8 @@
 package jenkinsx.example.springboot;
 
 import freemarker.template.SimpleDate;
+import io.fabric8.kubernetes.client.DefaultKubernetesClient;
+import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClientException;
 import io.fabric8.kubernetes.client.Watcher;
 import io.jenkins.x.client.PipelineClient;
@@ -27,7 +29,8 @@ public class PipelineWatcher {
     private Date creationTimestamp;
 
     public PipelineWatcher() {
-        this.pipelineClient = PipelineClient.newInstance();
+        KubernetesClient kubernetesClient = new DefaultKubernetesClient();
+        this.pipelineClient = PipelineClient.newInstance(kubernetesClient, "jx");
     }
 
     private void watch() {
@@ -39,7 +42,7 @@ public class PipelineWatcher {
                     PipelineWatcher.this.creationTimestamp = PipelineWatcher.this.creationTimestamp == null ? ct : creationTimestamp;
                     if (ct.getTime() > creationTimestamp.getTime()) {
                         PipelineWatcher.this.creationTimestamp = ct;
-                        log.log(Level.INFO, "New Event at ", timestampFormat.format(ct));
+                        log.log(Level.INFO, "New Event at " + ct.toString());
                         log.log(Level.INFO, pipelineActivity.toString());
                     }
                 } catch (ParseException e) {
@@ -57,9 +60,9 @@ public class PipelineWatcher {
     }
 
     public void start() {
-        //this.watch();
+        this.watch();
         this.pipelineClient.start();
-        System.out.println("here");
+        System.out.println(this.pipelineClient.getNamespace());
         System.out.println(this.pipelineClient.getPipelines());
     }
 
