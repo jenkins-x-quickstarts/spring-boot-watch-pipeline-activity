@@ -40,7 +40,7 @@ public class PipelineWatcher {
                     if (ct.getTime() > creationTimestamp.getTime()) {
                         PipelineWatcher.this.creationTimestamp = ct;
                         log.log(Level.INFO, "New Event at ", timestampFormat.format(ct));
-                        log.log(Level.INFO, pipelineActivity.);
+                        log.log(Level.INFO, pipelineActivity.toString());
                     }
                 } catch (ParseException e) {
                     log.log(Level.SEVERE, "Failed to parse creationTimestamp " + pipelineActivity.getMetadata().getCreationTimestamp(), e);
