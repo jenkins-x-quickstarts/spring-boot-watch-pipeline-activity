@@ -37,11 +37,11 @@ public class PipelineWatcher {
                 try {
                     Date ct = timestampFormat.parse(pipelineActivity.getMetadata().getCreationTimestamp());
                     PipelineWatcher.this.creationTimestamp = PipelineWatcher.this.creationTimestamp == null ? ct : creationTimestamp;
-                    if (ct.getTime() > creationTimestamp.getTime()) {
+                    //if (ct.getTime() > creationTimestamp.getTime()) {
                         PipelineWatcher.this.creationTimestamp = ct;
                         log.log(Level.INFO, "New Event at ", timestampFormat.format(ct));
                         log.log(Level.INFO, pipelineActivity.toString());
-                    }
+                    //}
                 } catch (ParseException e) {
                     log.log(Level.SEVERE, "Failed to parse creationTimestamp " + pipelineActivity.getMetadata().getCreationTimestamp(), e);
                 }
