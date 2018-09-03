@@ -24,13 +24,16 @@
 </nav>
 
 <div class="container">
-
     <div class="starter-template">
-        <h1>Spring Boot App</h1>
+        <h1>Watch PipelineActivities using Spring Boot</h1>
         <img border="0" src="https://jenkins-x.io/images/logo.png" width="300" height="300"/>
-        <h2>${message}</h2>
-    </div>
-
+		<p>
+			The example writes any PipelineActivites to the console. Use
+			<code>jx logs --env staging jx-staging-&lt;app name&gt;</code> to view the log. Then trigger
+			a promotion using
+			<code>jx promote &lt;app name&gt; --version=&lt;version in staging&gt; --env production</code>.
+		</p>
+	<div>
 </div>
 <!-- /.container -->
 

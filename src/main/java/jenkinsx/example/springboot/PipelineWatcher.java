@@ -1,15 +1,11 @@
 package jenkinsx.example.springboot;
 
-import freemarker.template.SimpleDate;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClientException;
 import io.fabric8.kubernetes.client.Watcher;
 import io.jenkins.x.client.PipelineClient;
 import io.jenkins.x.client.kube.PipelineActivity;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
@@ -62,8 +58,6 @@ public class PipelineWatcher {
     public void start() {
         this.watch();
         this.pipelineClient.start();
-        System.out.println(this.pipelineClient.getNamespace());
-        System.out.println(this.pipelineClient.getPipelines());
     }
 
 }
