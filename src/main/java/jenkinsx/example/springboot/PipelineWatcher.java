@@ -57,8 +57,9 @@ public class PipelineWatcher {
     }
 
     public void start() {
-        this.watch();
+        //this.watch();
         this.pipelineClient.start();
+        System.out.println(this.pipelineClient.getPipelines());
     }
 
 }
